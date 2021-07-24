@@ -1,3 +1,6 @@
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
+
 
 '''MUST USE OWN SPOTIFY ACCOUNT.
 -FIRST GO TO THE DEVELOPER DASHBOARD AND CREATE A NEW SPOTIFY APP.
@@ -12,3 +15,13 @@ SPOTIFY_URI = []
 THE USER CHOSE USING BEAUTFULSOUP '''
 user_input = input("Which year do you want to travel to? Please enter the date in this format YYYY-MM-DD:\n")
 
+'''MUST USE SPOTIPY IN ORDER TO ACCESS OWN'S SPOTIFY ACCOUNT.
+-MUST PASS "playlist-modify-private" IN ORDER TO CREATE A PRIVATE PLAYLIST.
+-AFTER USING SPOTIPY AUTHENTICATION, IT WILL LEAD YOU TO THE SPOTIPY_REDIRECT_URI, AND MUST COPY THE ENTIRE URL INTO THE
+THE PYCHARM PROMPT.
+-AFTER ENTERING THE URL TO THE PYCHARM PROMPT, RESTART PYCHARM AND A FILE CALLED 'token.txt' WILL BE AUTOMATICALLY GENERATED.
+
+'''
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID, client_secret=CLIENT_SECRET,
+                                               redirect_uri=SPOTIPY_REDIRECT_URI,scope="playlist-modify-private",
+                                                show_dialog=True,cache_path="token.txt"))
