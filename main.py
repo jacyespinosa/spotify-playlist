@@ -60,3 +60,9 @@ for song in song_list:
         SPOTIFY_URI.append(f"spotify:track:{current_song}")
     except IndexError:
         print(f"{song} could not be added to the playlist.")
+
+
+#CREATE A PLAYLIST
+playlist = sp.user_playlist_create(user=user_id, name=f"{user_input} Billboard 100",
+                                   public=False,description=f"Top 100 songs from {user_input}.")
+PLAYLIST_ID = playlist["uri"]
