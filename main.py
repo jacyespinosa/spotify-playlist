@@ -42,3 +42,10 @@ soup = BeautifulSoup(webpage, "html.parser")
 songs = soup.find_all(name="span", class_="chart-element__information__song text--truncate color--primary")
 artists = soup.find_all(name="span", class_="chart-element__information__artist text--truncate color--secondary")
 
+'''
+USING THE DATA RECEIVED FROM WEB SCRAPING THE BILLBOARD'S WEBSITE, WE CAN CREATE A LIST OF
+SPOTIFY SONG URIs FOR THE LIST OF SONGS NAMES FOUND FROM SCRAPING THE BILLBOARD WEBSITE.
+'''
+song_list = [song.getText() for song in songs]
+artist_list = [artist.getText() for artist in artists]
+
