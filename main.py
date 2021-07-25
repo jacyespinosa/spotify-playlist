@@ -49,3 +49,14 @@ SPOTIFY SONG URIs FOR THE LIST OF SONGS NAMES FOUND FROM SCRAPING THE BILLBOARD 
 song_list = [song.getText() for song in songs]
 artist_list = [artist.getText() for artist in artists]
 
+year = user_input.split("-")[0]
+user_id = sp.current_user()["id"]
+
+for song in song_list:
+    uri = sp.search(q=f"track:{song} year:{year}", type="track")
+    #MUST CATCH AN EXCEPTION TO SKIP OVER THE SONGS JUST IN CASE A SONG IS NOT AVAILABLE ON SPOTIFY
+    try:
+        current_song = uri["tracks"]["items"][0]["id"]
+        SPOTIFY_URI.append(f"spotify:track:{current_song}")
+    except IndexError:
+        print(f"{song} could not be added to the playlist.")
