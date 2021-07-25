@@ -66,3 +66,9 @@ for song in song_list:
 playlist = sp.user_playlist_create(user=user_id, name=f"{user_input} Billboard 100",
                                    public=False,description=f"Top 100 songs from {user_input}.")
 PLAYLIST_ID = playlist["uri"]
+
+
+'''ADDING TRACKS TO THE PLAYLIST. THE PLAYLIST ID DATA IS AVAILABLE AFTER CREATING A PLAYLIST. MUST BE PASSED AS A PARAMETER 
+IN ORDER TO ADD SONGS TO THE PLAYLIST SELECTED.
+'''
+sp.playlist_add_items(playlist_id=PLAYLIST_ID, items=SPOTIFY_URI)
